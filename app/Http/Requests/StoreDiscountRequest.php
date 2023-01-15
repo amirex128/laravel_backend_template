@@ -34,7 +34,15 @@ class StoreDiscountRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'code'=>'required|string|unique:discounts,code',
+            'started_at'=>'required|date',
+            'ended_at'=>'required|date',
+            'count'=>'required|integer',
+            'value'=>'required|integer',
+            'percent'=>'required|integer',
+            'type'=>'required|in:percent,amount',
+            'product_ids'=>'filled|array',
+            'shop_ids'=>'filled|array',
         ];
     }
 }

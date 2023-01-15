@@ -34,7 +34,9 @@ class UpdateCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'filled|string|max:255',
+            'sort' => 'filled|integer',
+            'description' => 'filled|string|max:255',
         ];
     }
 }

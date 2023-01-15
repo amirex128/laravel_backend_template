@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 /**
  * App\Models\Customer
@@ -37,10 +39,23 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \App\Models\Province|null $province
  * @method static \Illuminate\Database\Eloquent\Builder|Customer whereCityId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Customer whereProvinceId($value)
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+ * @property-read int|null $notifications_count
  */
-class Customer extends BaseModel
+class Customer extends Authenticatable
 {
-    use HasFactory;
+    use HasFactory, Notifiable;
+
+    protected $guarded = [];
+
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
+    protected $hidden = [
+        'password',
+    ];
 
     public function province()
     {

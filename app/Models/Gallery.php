@@ -34,11 +34,14 @@ use Illuminate\Database\Eloquent\Model;
  * @property int|null $user_id
  * @property-read \App\Models\User|null $user
  * @method static \Illuminate\Database\Eloquent\Builder|Gallery whereUserId($value)
+ * @property string $type
+ * @method static \Illuminate\Database\Eloquent\Builder|Gallery whereType($value)
  */
 class Gallery extends BaseModel
 {
     use HasFactory;
 
+    protected $guarded = [];
     public function user()
     {
         return $this->belongsTo(User::class);

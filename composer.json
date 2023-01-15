@@ -17,7 +17,8 @@
         "laravel/tinker": "^2.7",
         "livewire/livewire": "^2.10",
         "melipayamak/php": "1.0.0",
-        "spiral/roadrunner": "^2.12"
+        "spiral/roadrunner": "^2.12",
+      "ext-gd": "*"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.12",

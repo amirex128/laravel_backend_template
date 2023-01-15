@@ -14,11 +14,14 @@ class AddressController extends Controller
      * @api {get} /address address.index
      * @apiName address.index
      * @apiGroup address
-     * @apiParam {Number} [per_page=10] The number of items to return per page.
+     * @apiParam {Number} [per_page=10] per page
      */
     public function index(Request $request)
     {
-        $addresses = Address::query()->where('user_id', auth()->id())->latest()->paginate($request->input('per_page'));
+        $addresses = Address::query()
+            ->where('user_id', auth()->id())
+            ->latest()
+            ->paginate($request->input('per_page', 10));
 
         return response()->json($addresses);
     }
@@ -42,6 +45,7 @@ class AddressController extends Controller
      */
     public function store(StoreAddressRequest $request)
     {
+        $request->merge(['user_id' => auth()->id()]);
         $address = Address::query()->create($request->validated());
 
         return response()->json($address);
@@ -92,6 +96,8 @@ class AddressController extends Controller
     {
         $address->delete();
 
-        return response()->json(null, 204);
+        return response()->json([
+            'message' => 'آدرس با موفقیت حذف شد',
+        ]);
     }
 }

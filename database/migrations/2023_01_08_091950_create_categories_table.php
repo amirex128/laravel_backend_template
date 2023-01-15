@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->integer('sort');
-            $table->string('equivalent')->nullable();
             $table->string('description')->nullable();
             $table->foreignIdFor(\App\Models\User::class);
             $table->foreignIdFor(\App\Models\Shop::class);

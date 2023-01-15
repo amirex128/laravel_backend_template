@@ -26,6 +26,7 @@ return new class extends Migration
             $table->enum('block_status', ['block', 'ok'])->default('ok');
             $table->foreignIdFor(\App\Models\User::class);
             $table->foreignIdFor(\App\Models\Shop::class);
+            $table->softDeletes();
             $table->timestamps();
         });
         Schema::create('gallery_product', function (Blueprint $table) {

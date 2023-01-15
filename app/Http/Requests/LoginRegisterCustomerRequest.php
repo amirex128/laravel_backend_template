@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreCategoryRequest extends FormRequest
+class LoginRegisterCustomerRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -17,16 +17,6 @@ class StoreCategoryRequest extends FormRequest
     }
 
     /**
-     * Get custom attributes for validator errors.
-     *
-     * @return array
-     */
-    public function attributes()
-    {
-        return [];
-    }
-
-    /**
      * Get the validation rules that apply to the request.
      *
      * @return array<string, mixed>
@@ -34,9 +24,12 @@ class StoreCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|max:255',
-            'description' => 'required|string|max:255',
-            'shop_id' => 'required|integer',
+            'full_name' => 'required|string|max:255',
+            'mobile' => 'required|starts_with:09|digits:11',
+            'address' => 'required|string',
+            'postal_code' => 'required|string|max:10',
+            'city_id' => 'required|exists:cities,id',
+            'province_id' => 'required|exists:provinces,id',
         ];
     }
 }

@@ -25,7 +25,7 @@ class UpdateCustomerRequest extends FormRequest
     {
         return [];
     }
-    
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -34,7 +34,12 @@ class UpdateCustomerRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'full_name' => 'filled|string|max:255',
+            'mobile' => 'filled|starts_with:09|digits:11',
+            'address' => 'filled|string',
+            'postal_code' => 'filled|string|max:10',
+            'city_id' => 'filled|exists:cities,id',
+            'province_id' => 'filled|exists:provinces,id',
         ];
     }
 }

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->foreignIdFor(\App\Models\User::class);
             $table->foreignIdFor(\App\Models\Gallery::class)->nullable();
             $table->foreignIdFor(\App\Models\Shop::class);
+            $table->softDeletes();
             $table->timestamps();
         });
 

@@ -28,11 +28,18 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $product_id
  * @property-read \App\Models\Product|null $products
  * @method static \Illuminate\Database\Eloquent\Builder|Option whereProductId($value)
+ * @property int $user_id
+ * @property-read \App\Models\User|null $user
+ * @method static \Illuminate\Database\Eloquent\Builder|Option whereUserId($value)
  */
 class Option extends BaseModel
 {
     use HasFactory;
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
     public function products()
     {
         return $this->belongsTo(Product::class);

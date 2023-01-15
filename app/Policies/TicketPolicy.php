@@ -18,7 +18,7 @@ class TicketPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return true;
     }
 
     /**
@@ -30,9 +30,8 @@ class TicketPolicy
      */
     public function view(User $user, Ticket $ticket)
     {
-        //
+        return $user->id === $ticket->user_id;
     }
-
     /**
      * Determine whether the user can create models.
      *
@@ -41,7 +40,7 @@ class TicketPolicy
      */
     public function create(User $user)
     {
-        //
+        return true;
     }
 
     /**
@@ -53,7 +52,7 @@ class TicketPolicy
      */
     public function update(User $user, Ticket $ticket)
     {
-        //
+        return $user->id === $ticket->user_id;
     }
 
     /**
@@ -65,30 +64,7 @@ class TicketPolicy
      */
     public function delete(User $user, Ticket $ticket)
     {
-        //
+        return $user->id === $ticket->user_id;
     }
 
-    /**
-     * Determine whether the user can restore the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Ticket  $ticket
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function restore(User $user, Ticket $ticket)
-    {
-        //
-    }
-
-    /**
-     * Determine whether the user can permanently delete the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Ticket  $ticket
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function forceDelete(User $user, Ticket $ticket)
-    {
-        //
-    }
 }

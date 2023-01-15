@@ -17,10 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->longText('body')->nullable();
-            $table->string('email');
             $table->enum('accept',['pending','accepted','rejected'])->default('pending');
-            $table->integer('user_id')->nullable();
             $table->foreignIdFor(\App\Models\Shop::class);
+            $table->foreignIdFor(\App\Models\User::class);
             $table->timestamps();
         });
     }

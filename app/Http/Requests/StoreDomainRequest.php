@@ -34,7 +34,9 @@ class StoreDomainRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name'=>'required|string|max:255',
+            'type'=>'required|string|in:subdomain,domain',
+            'shop_id'=>'required|exists:shops,id',
         ];
     }
 }

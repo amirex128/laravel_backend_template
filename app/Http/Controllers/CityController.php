@@ -5,63 +5,24 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreCityRequest;
 use App\Http\Requests\UpdateCityRequest;
 use App\Models\City;
+use Illuminate\Http\Request;
 
 class CityController extends Controller
 {
+
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @api {get} /city city.index
+     * @apiName city.index
+     * @apiGroup city
+     * @apiParam {Number} [per_page=10] per page
      */
     public function index(Request $request)
     {
-        //
+        $cities = City::query()
+            ->latest()
+            ->paginate($request->input('per_page', 10));
+
+        return response()->json($cities);
     }
 
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreCityRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreCityRequest $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\City  $city
-     * @return \Illuminate\Http\Response
-     */
-    public function show(City $city)
-    {
-        //
-    }
-
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateCityRequest  $request
-     * @param  \App\Models\City  $city
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateCityRequest $request, City $city)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\City  $city
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(City $city)
-    {
-        //
-    }
 }

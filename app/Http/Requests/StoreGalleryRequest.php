@@ -34,7 +34,9 @@ class StoreGalleryRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'file'=>'required|file',
+            'type'=>'required|in:image,video,file',
+
         ];
     }
 }

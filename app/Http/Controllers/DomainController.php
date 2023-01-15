@@ -5,63 +5,76 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreDomainRequest;
 use App\Http\Requests\UpdateDomainRequest;
 use App\Models\Domain;
+use Illuminate\Http\Request;
 
 class DomainController extends Controller
 {
+
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @api {get} /domain domain.index
+     * @apiName domain.index
+     * @apiGroup domain
+     * @apiParam {Number} [per_page=10] per page
      */
     public function index(Request $request)
     {
-        //
+        $domain = Domain::query()->where('user_id', auth()->id())->load('shop')->latest()->paginate($request->input('per_page', 10));
+        return response()->json($domain);
     }
 
-
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreDomainRequest  $request
-     * @return \Illuminate\Http\Response
+     * @api {post} /domain domain.store
+     * @apiName domain.store
+     * @apiGroup domain
+     * @apiBody {String} name name
+     * @apiBody {String} type type_consist of subdomain or domain
+     * @apiBody {Number} shop_id shop_id
      */
     public function store(StoreDomainRequest $request)
     {
-        //
+        $request->merge(['user_id' => auth()->id()]);
+        $domain = Domain::create($request->validated());
+        return response()->json($domain);
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Domain  $domain
-     * @return \Illuminate\Http\Response
+     * @api {get} /domain/:id domain.show
+     * @apiName domain.show
+     * @apiGroup domain
+     * @apiParam {Number} id model id
      */
     public function show(Domain $domain)
     {
-        //
+        return response()->json($domain);
     }
 
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateDomainRequest  $request
-     * @param  \App\Models\Domain  $domain
-     * @return \Illuminate\Http\Response
+     * @api {put} /domain/:id domain.update
+     * @apiName domain.update
+     * @apiGroup domain
+     * @apiParam {Number} id model id
+     * @apiBody {String} name name
+     * @apiBody {String} type type_consist of subdomain or domain
+     * @apiBody {Number} shop_id shop_id
      */
     public function update(UpdateDomainRequest $request, Domain $domain)
     {
-        //
+        $domain->update($request->validated());
+        return response()->json($domain);
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Domain  $domain
-     * @return \Illuminate\Http\Response
+     * @api {delete} /domain/:id domain.destroy
+     * @apiName domain.destroy
+     * @apiGroup domain
+     * @apiParam {Number} id model id
      */
     public function destroy(Domain $domain)
     {
-        //
+        $domain->delete();
+        return response()->json([
+            'message' => 'دامنه با موفقیت حذف شد',
+        ]);
     }
 }

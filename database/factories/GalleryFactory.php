@@ -19,10 +19,9 @@ class GalleryFactory extends Factory
         return [
             'path' => $this->faker->imageUrl,
             'full_path' => $this->faker->imageUrl,
-            'mime_type' => $this->faker->word,
+            'mime_type' => $this->faker->mimeType(),
             'size' => $this->faker->randomNumber(),
-            'width' => $this->faker->randomNumber(),
-            'height' => $this->faker->randomNumber(),
+            'type' => $this->faker->randomElement(['image', 'video', 'file']),
         ];
     }
 }

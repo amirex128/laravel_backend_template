@@ -34,7 +34,10 @@ class StoreCommentRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title'=>'required|string|max:255',
+            'body'=>'nullable|string|max:255',
+            'shop_id'=>'required|exists:shops,id',
+            'product_id'=>'required|exists:products,id',
         ];
     }
 }

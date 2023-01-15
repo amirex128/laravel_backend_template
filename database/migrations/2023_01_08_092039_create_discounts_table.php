@@ -31,6 +31,10 @@ return new class extends Migration
             $table->foreignIdFor(\App\Models\Discount::class);
             $table->foreignIdFor(\App\Models\Product::class);
         });
+        Schema::create('shop_product', function (Blueprint $table) {
+            $table->foreignIdFor(\App\Models\Discount::class);
+            $table->foreignIdFor(\App\Models\Shop::class);
+        });
     }
 
     /**
@@ -42,5 +46,6 @@ return new class extends Migration
     {
         Schema::dropIfExists('discounts');
         Schema::dropIfExists('discount_product');
+        Schema::dropIfExists('shop_product');
     }
 };

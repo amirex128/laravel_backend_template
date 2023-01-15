@@ -19,7 +19,6 @@ class ArticleCategoryFactory extends Factory
         return [
             'name' => $this->faker->name,
             'sort' => $this->faker->numberBetween(1, 100),
-            'equivalent' => $this->faker->name,
             'description' => $this->faker->text,
         ];
     }

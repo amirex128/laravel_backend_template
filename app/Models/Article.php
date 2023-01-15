@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * App\Models\Article
@@ -38,11 +39,16 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Article whereGalleryId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Article whereShopId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Article whereUserId($value)
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @method static \Illuminate\Database\Query\Builder|Article onlyTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|Article whereDeletedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|Article withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|Article withoutTrashed()
  */
 class Article extends BaseModel
 {
     use HasFactory;
-
+    use SoftDeletes;
     public function user()
     {
         return $this->belongsTo(User::class);

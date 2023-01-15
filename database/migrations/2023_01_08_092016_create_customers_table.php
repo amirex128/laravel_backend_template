@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('full_name')->nullable();
             $table->string('mobile');
-            $table->string('address')->nullable();
+            $table->longText('address')->nullable();
             $table->string('postal_code')->nullable();
             $table->string('verify_code')->nullable();
             $table->dateTime('last_send_sms_at')->nullable();

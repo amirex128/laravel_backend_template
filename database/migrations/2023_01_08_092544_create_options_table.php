@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('price');
             $table->integer('quantity');
             $table->foreignIdFor(\App\Models\Product::class);
+            $table->foreignIdFor(\App\Models\User::class);
             $table->timestamps();
         });
     }

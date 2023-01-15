@@ -25,7 +25,7 @@ class UpdateArticleCategoryRequest extends FormRequest
     {
         return [];
     }
-    
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -34,7 +34,9 @@ class UpdateArticleCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'filled|string|max:255',
+            'sort' => 'filled|integer',
+            'description' => 'filled|string|max:255',
         ];
     }
 }

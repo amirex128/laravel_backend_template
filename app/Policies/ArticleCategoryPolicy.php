@@ -18,7 +18,7 @@ class ArticleCategoryPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return true;
     }
 
     /**
@@ -30,7 +30,7 @@ class ArticleCategoryPolicy
      */
     public function view(User $user, ArticleCategory $articleCategory)
     {
-        //
+        return $user->id === $articleCategory->user_id;
     }
 
     /**
@@ -41,7 +41,7 @@ class ArticleCategoryPolicy
      */
     public function create(User $user)
     {
-        //
+        return true;
     }
 
     /**
@@ -53,7 +53,7 @@ class ArticleCategoryPolicy
      */
     public function update(User $user, ArticleCategory $articleCategory)
     {
-        //
+        return $user->id === $articleCategory->user_id;
     }
 
     /**
@@ -65,30 +65,7 @@ class ArticleCategoryPolicy
      */
     public function delete(User $user, ArticleCategory $articleCategory)
     {
-        //
+        return $user->id === $articleCategory->user_id;
     }
 
-    /**
-     * Determine whether the user can restore the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\ArticleCategory  $articleCategory
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function restore(User $user, ArticleCategory $articleCategory)
-    {
-        //
-    }
-
-    /**
-     * Determine whether the user can permanently delete the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\ArticleCategory  $articleCategory
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function forceDelete(User $user, ArticleCategory $articleCategory)
-    {
-        //
-    }
 }

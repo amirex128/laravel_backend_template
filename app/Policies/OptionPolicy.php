@@ -18,19 +18,7 @@ class OptionPolicy
      */
     public function viewAny(User $user)
     {
-        //
-    }
-
-    /**
-     * Determine whether the user can view the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Option  $option
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function view(User $user, Option $option)
-    {
-        //
+        return true;
     }
 
     /**
@@ -41,7 +29,7 @@ class OptionPolicy
      */
     public function create(User $user)
     {
-        //
+        return true;
     }
 
     /**
@@ -53,7 +41,7 @@ class OptionPolicy
      */
     public function update(User $user, Option $option)
     {
-        //
+        return $user->id === $option->user_id;
     }
 
     /**
@@ -65,30 +53,6 @@ class OptionPolicy
      */
     public function delete(User $user, Option $option)
     {
-        //
-    }
-
-    /**
-     * Determine whether the user can restore the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Option  $option
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function restore(User $user, Option $option)
-    {
-        //
-    }
-
-    /**
-     * Determine whether the user can permanently delete the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Option  $option
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function forceDelete(User $user, Option $option)
-    {
-        //
+        return $user->id === $option->user_id;
     }
 }

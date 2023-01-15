@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\ForgetPassRequest;
 use App\Http\Requests\LoginRegisterRequest;
 use App\Http\Requests\LoginWithCodeRequest;
@@ -10,13 +9,12 @@ use App\Http\Requests\LoginWithPassRequest;
 use App\Http\Requests\RegisterPassRequest;
 use App\Models\User;
 use Carbon\Carbon;
-use \Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 use SMS;
 
-class ApiAuthController extends Controller
+class UserApiAuthController extends Controller
 {
 
     public function loginRegister(LoginRegisterRequest $request)
@@ -120,20 +118,20 @@ class ApiAuthController extends Controller
                 "verify_code" => false,
             ]);
         }
-        if (!Auth::attempt($request->only('mobile', 'password'))) {
+        if ($request->mobile == $user->mobile && Hash::check($request->password, $user->password)) {
             return response()->json([
-                "message" => "رمز عبور صحیح نمی باشد",
+                "message" => "ورود با موفقیت انجام شد",
                 "is_register" => true,
                 "has_password" => true,
                 "verify_code" => false,
+                "token" => $user->createToken('authToken')->plainTextToken,
             ]);
         }
         return response()->json([
-            "message" => "ورود با موفقیت انجام شد",
+            "message" => "رمز عبور صحیح نمی باشد",
             "is_register" => true,
             "has_password" => true,
             "verify_code" => false,
-            "token" => $user->createToken('authToken')->plainTextToken,
         ]);
 
     }
@@ -141,7 +139,7 @@ class ApiAuthController extends Controller
     public function registerPass(RegisterPassRequest $request)
     {
         $request->user()->update([
-            'password' => bcrypt($request->password),
+            'password' => Hash::make($request->password),
         ]);
         return response()->json([
             "message" => "ثبت گذرواژه با موفقیت انجام شد",

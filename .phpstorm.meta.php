@@ -11,6 +11,7 @@ namespace PHPSTORM_META {
     */
     override(new \Illuminate\Contracts\Container\Container, map([
         '' => '@',
+            'Fruitcake\Cors\CorsService' => \Fruitcake\Cors\CorsService::class,
             'Illuminate\Auth\Console\ClearResetsCommand' => \Illuminate\Auth\Console\ClearResetsCommand::class,
             'Illuminate\Auth\Middleware\RequirePassword' => \Illuminate\Auth\Middleware\RequirePassword::class,
             'Illuminate\Broadcasting\BroadcastManager' => \Illuminate\Broadcasting\BroadcastManager::class,
@@ -225,6 +226,7 @@ namespace PHPSTORM_META {
             'flare.logger' => \Monolog\Logger::class,
             'hash' => \Illuminate\Hashing\HashManager::class,
             'hash.driver' => \Illuminate\Hashing\BcryptHasher::class,
+            'larabug' => \LaraBug\LaraBug::class,
             'log' => \Illuminate\Log\LogManager::class,
             'mail.manager' => \Illuminate\Mail\MailManager::class,
             'mailer' => \Illuminate\Mail\Mailer::class,
@@ -250,9 +252,11 @@ namespace PHPSTORM_META {
             'view' => \Illuminate\View\Factory::class,
             'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
             'view.finder' => \Illuminate\View\FileViewFinder::class,
+            'webp' => \Buglinjo\LaravelWebp\Webp::class,
         ]));
     override(\Illuminate\Container\Container::makeWith(0), map([
         '' => '@',
+            'Fruitcake\Cors\CorsService' => \Fruitcake\Cors\CorsService::class,
             'Illuminate\Auth\Console\ClearResetsCommand' => \Illuminate\Auth\Console\ClearResetsCommand::class,
             'Illuminate\Auth\Middleware\RequirePassword' => \Illuminate\Auth\Middleware\RequirePassword::class,
             'Illuminate\Broadcasting\BroadcastManager' => \Illuminate\Broadcasting\BroadcastManager::class,
@@ -467,6 +471,7 @@ namespace PHPSTORM_META {
             'flare.logger' => \Monolog\Logger::class,
             'hash' => \Illuminate\Hashing\HashManager::class,
             'hash.driver' => \Illuminate\Hashing\BcryptHasher::class,
+            'larabug' => \LaraBug\LaraBug::class,
             'log' => \Illuminate\Log\LogManager::class,
             'mail.manager' => \Illuminate\Mail\MailManager::class,
             'mailer' => \Illuminate\Mail\Mailer::class,
@@ -492,9 +497,11 @@ namespace PHPSTORM_META {
             'view' => \Illuminate\View\Factory::class,
             'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
             'view.finder' => \Illuminate\View\FileViewFinder::class,
+            'webp' => \Buglinjo\LaravelWebp\Webp::class,
         ]));
     override(\Illuminate\Contracts\Container\Container::get(0), map([
         '' => '@',
+            'Fruitcake\Cors\CorsService' => \Fruitcake\Cors\CorsService::class,
             'Illuminate\Auth\Console\ClearResetsCommand' => \Illuminate\Auth\Console\ClearResetsCommand::class,
             'Illuminate\Auth\Middleware\RequirePassword' => \Illuminate\Auth\Middleware\RequirePassword::class,
             'Illuminate\Broadcasting\BroadcastManager' => \Illuminate\Broadcasting\BroadcastManager::class,
@@ -709,6 +716,7 @@ namespace PHPSTORM_META {
             'flare.logger' => \Monolog\Logger::class,
             'hash' => \Illuminate\Hashing\HashManager::class,
             'hash.driver' => \Illuminate\Hashing\BcryptHasher::class,
+            'larabug' => \LaraBug\LaraBug::class,
             'log' => \Illuminate\Log\LogManager::class,
             'mail.manager' => \Illuminate\Mail\MailManager::class,
             'mailer' => \Illuminate\Mail\Mailer::class,
@@ -734,9 +742,11 @@ namespace PHPSTORM_META {
             'view' => \Illuminate\View\Factory::class,
             'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
             'view.finder' => \Illuminate\View\FileViewFinder::class,
+            'webp' => \Buglinjo\LaravelWebp\Webp::class,
         ]));
     override(\Illuminate\Contracts\Container\Container::make(0), map([
         '' => '@',
+            'Fruitcake\Cors\CorsService' => \Fruitcake\Cors\CorsService::class,
             'Illuminate\Auth\Console\ClearResetsCommand' => \Illuminate\Auth\Console\ClearResetsCommand::class,
             'Illuminate\Auth\Middleware\RequirePassword' => \Illuminate\Auth\Middleware\RequirePassword::class,
             'Illuminate\Broadcasting\BroadcastManager' => \Illuminate\Broadcasting\BroadcastManager::class,
@@ -951,6 +961,7 @@ namespace PHPSTORM_META {
             'flare.logger' => \Monolog\Logger::class,
             'hash' => \Illuminate\Hashing\HashManager::class,
             'hash.driver' => \Illuminate\Hashing\BcryptHasher::class,
+            'larabug' => \LaraBug\LaraBug::class,
             'log' => \Illuminate\Log\LogManager::class,
             'mail.manager' => \Illuminate\Mail\MailManager::class,
             'mailer' => \Illuminate\Mail\Mailer::class,
@@ -976,9 +987,11 @@ namespace PHPSTORM_META {
             'view' => \Illuminate\View\Factory::class,
             'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
             'view.finder' => \Illuminate\View\FileViewFinder::class,
+            'webp' => \Buglinjo\LaravelWebp\Webp::class,
         ]));
     override(\Illuminate\Contracts\Container\Container::makeWith(0), map([
         '' => '@',
+            'Fruitcake\Cors\CorsService' => \Fruitcake\Cors\CorsService::class,
             'Illuminate\Auth\Console\ClearResetsCommand' => \Illuminate\Auth\Console\ClearResetsCommand::class,
             'Illuminate\Auth\Middleware\RequirePassword' => \Illuminate\Auth\Middleware\RequirePassword::class,
             'Illuminate\Broadcasting\BroadcastManager' => \Illuminate\Broadcasting\BroadcastManager::class,
@@ -1193,6 +1206,7 @@ namespace PHPSTORM_META {
             'flare.logger' => \Monolog\Logger::class,
             'hash' => \Illuminate\Hashing\HashManager::class,
             'hash.driver' => \Illuminate\Hashing\BcryptHasher::class,
+            'larabug' => \LaraBug\LaraBug::class,
             'log' => \Illuminate\Log\LogManager::class,
             'mail.manager' => \Illuminate\Mail\MailManager::class,
             'mailer' => \Illuminate\Mail\Mailer::class,
@@ -1218,9 +1232,11 @@ namespace PHPSTORM_META {
             'view' => \Illuminate\View\Factory::class,
             'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
             'view.finder' => \Illuminate\View\FileViewFinder::class,
+            'webp' => \Buglinjo\LaravelWebp\Webp::class,
         ]));
     override(\App::get(0), map([
         '' => '@',
+            'Fruitcake\Cors\CorsService' => \Fruitcake\Cors\CorsService::class,
             'Illuminate\Auth\Console\ClearResetsCommand' => \Illuminate\Auth\Console\ClearResetsCommand::class,
             'Illuminate\Auth\Middleware\RequirePassword' => \Illuminate\Auth\Middleware\RequirePassword::class,
             'Illuminate\Broadcasting\BroadcastManager' => \Illuminate\Broadcasting\BroadcastManager::class,
@@ -1435,6 +1451,7 @@ namespace PHPSTORM_META {
             'flare.logger' => \Monolog\Logger::class,
             'hash' => \Illuminate\Hashing\HashManager::class,
             'hash.driver' => \Illuminate\Hashing\BcryptHasher::class,
+            'larabug' => \LaraBug\LaraBug::class,
             'log' => \Illuminate\Log\LogManager::class,
             'mail.manager' => \Illuminate\Mail\MailManager::class,
             'mailer' => \Illuminate\Mail\Mailer::class,
@@ -1460,9 +1477,11 @@ namespace PHPSTORM_META {
             'view' => \Illuminate\View\Factory::class,
             'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
             'view.finder' => \Illuminate\View\FileViewFinder::class,
+            'webp' => \Buglinjo\LaravelWebp\Webp::class,
         ]));
     override(\App::make(0), map([
         '' => '@',
+            'Fruitcake\Cors\CorsService' => \Fruitcake\Cors\CorsService::class,
             'Illuminate\Auth\Console\ClearResetsCommand' => \Illuminate\Auth\Console\ClearResetsCommand::class,
             'Illuminate\Auth\Middleware\RequirePassword' => \Illuminate\Auth\Middleware\RequirePassword::class,
             'Illuminate\Broadcasting\BroadcastManager' => \Illuminate\Broadcasting\BroadcastManager::class,
@@ -1677,6 +1696,7 @@ namespace PHPSTORM_META {
             'flare.logger' => \Monolog\Logger::class,
             'hash' => \Illuminate\Hashing\HashManager::class,
             'hash.driver' => \Illuminate\Hashing\BcryptHasher::class,
+            'larabug' => \LaraBug\LaraBug::class,
             'log' => \Illuminate\Log\LogManager::class,
             'mail.manager' => \Illuminate\Mail\MailManager::class,
             'mailer' => \Illuminate\Mail\Mailer::class,
@@ -1702,9 +1722,11 @@ namespace PHPSTORM_META {
             'view' => \Illuminate\View\Factory::class,
             'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
             'view.finder' => \Illuminate\View\FileViewFinder::class,
+            'webp' => \Buglinjo\LaravelWebp\Webp::class,
         ]));
     override(\App::makeWith(0), map([
         '' => '@',
+            'Fruitcake\Cors\CorsService' => \Fruitcake\Cors\CorsService::class,
             'Illuminate\Auth\Console\ClearResetsCommand' => \Illuminate\Auth\Console\ClearResetsCommand::class,
             'Illuminate\Auth\Middleware\RequirePassword' => \Illuminate\Auth\Middleware\RequirePassword::class,
             'Illuminate\Broadcasting\BroadcastManager' => \Illuminate\Broadcasting\BroadcastManager::class,
@@ -1919,6 +1941,7 @@ namespace PHPSTORM_META {
             'flare.logger' => \Monolog\Logger::class,
             'hash' => \Illuminate\Hashing\HashManager::class,
             'hash.driver' => \Illuminate\Hashing\BcryptHasher::class,
+            'larabug' => \LaraBug\LaraBug::class,
             'log' => \Illuminate\Log\LogManager::class,
             'mail.manager' => \Illuminate\Mail\MailManager::class,
             'mailer' => \Illuminate\Mail\Mailer::class,
@@ -1944,9 +1967,11 @@ namespace PHPSTORM_META {
             'view' => \Illuminate\View\Factory::class,
             'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
             'view.finder' => \Illuminate\View\FileViewFinder::class,
+            'webp' => \Buglinjo\LaravelWebp\Webp::class,
         ]));
     override(\app(0), map([
         '' => '@',
+            'Fruitcake\Cors\CorsService' => \Fruitcake\Cors\CorsService::class,
             'Illuminate\Auth\Console\ClearResetsCommand' => \Illuminate\Auth\Console\ClearResetsCommand::class,
             'Illuminate\Auth\Middleware\RequirePassword' => \Illuminate\Auth\Middleware\RequirePassword::class,
             'Illuminate\Broadcasting\BroadcastManager' => \Illuminate\Broadcasting\BroadcastManager::class,
@@ -2161,6 +2186,7 @@ namespace PHPSTORM_META {
             'flare.logger' => \Monolog\Logger::class,
             'hash' => \Illuminate\Hashing\HashManager::class,
             'hash.driver' => \Illuminate\Hashing\BcryptHasher::class,
+            'larabug' => \LaraBug\LaraBug::class,
             'log' => \Illuminate\Log\LogManager::class,
             'mail.manager' => \Illuminate\Mail\MailManager::class,
             'mailer' => \Illuminate\Mail\Mailer::class,
@@ -2186,9 +2212,11 @@ namespace PHPSTORM_META {
             'view' => \Illuminate\View\Factory::class,
             'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
             'view.finder' => \Illuminate\View\FileViewFinder::class,
+            'webp' => \Buglinjo\LaravelWebp\Webp::class,
         ]));
     override(\resolve(0), map([
         '' => '@',
+            'Fruitcake\Cors\CorsService' => \Fruitcake\Cors\CorsService::class,
             'Illuminate\Auth\Console\ClearResetsCommand' => \Illuminate\Auth\Console\ClearResetsCommand::class,
             'Illuminate\Auth\Middleware\RequirePassword' => \Illuminate\Auth\Middleware\RequirePassword::class,
             'Illuminate\Broadcasting\BroadcastManager' => \Illuminate\Broadcasting\BroadcastManager::class,
@@ -2403,6 +2431,7 @@ namespace PHPSTORM_META {
             'flare.logger' => \Monolog\Logger::class,
             'hash' => \Illuminate\Hashing\HashManager::class,
             'hash.driver' => \Illuminate\Hashing\BcryptHasher::class,
+            'larabug' => \LaraBug\LaraBug::class,
             'log' => \Illuminate\Log\LogManager::class,
             'mail.manager' => \Illuminate\Mail\MailManager::class,
             'mailer' => \Illuminate\Mail\Mailer::class,
@@ -2428,9 +2457,11 @@ namespace PHPSTORM_META {
             'view' => \Illuminate\View\Factory::class,
             'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
             'view.finder' => \Illuminate\View\FileViewFinder::class,
+            'webp' => \Buglinjo\LaravelWebp\Webp::class,
         ]));
     override(\Psr\Container\ContainerInterface::get(0), map([
         '' => '@',
+            'Fruitcake\Cors\CorsService' => \Fruitcake\Cors\CorsService::class,
             'Illuminate\Auth\Console\ClearResetsCommand' => \Illuminate\Auth\Console\ClearResetsCommand::class,
             'Illuminate\Auth\Middleware\RequirePassword' => \Illuminate\Auth\Middleware\RequirePassword::class,
             'Illuminate\Broadcasting\BroadcastManager' => \Illuminate\Broadcasting\BroadcastManager::class,
@@ -2645,6 +2676,7 @@ namespace PHPSTORM_META {
             'flare.logger' => \Monolog\Logger::class,
             'hash' => \Illuminate\Hashing\HashManager::class,
             'hash.driver' => \Illuminate\Hashing\BcryptHasher::class,
+            'larabug' => \LaraBug\LaraBug::class,
             'log' => \Illuminate\Log\LogManager::class,
             'mail.manager' => \Illuminate\Mail\MailManager::class,
             'mailer' => \Illuminate\Mail\Mailer::class,
@@ -2670,6 +2702,7 @@ namespace PHPSTORM_META {
             'view' => \Illuminate\View\Factory::class,
             'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
             'view.finder' => \Illuminate\View\FileViewFinder::class,
+            'webp' => \Buglinjo\LaravelWebp\Webp::class,
         ]));
 
 

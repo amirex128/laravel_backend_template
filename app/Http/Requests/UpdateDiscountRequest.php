@@ -34,7 +34,16 @@ class UpdateDiscountRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'code'=>'filled|string|unique:discounts,code',
+            'started_at'=>'filled|date',
+            'ended_at'=>'filled|date',
+            'count'=>'filled|integer',
+            'value'=>'filled|integer',
+            'percent'=>'filled|integer',
+            'status'=>'filled|boolean',
+            'type'=>'filled|in:percent,amount',
+            'product_ids'=>'filled|array',
+            'shop_ids'=>'filled|array',
         ];
     }
 }

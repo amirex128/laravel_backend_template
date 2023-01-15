@@ -19,7 +19,6 @@ class CommentFactory extends Factory
         return [
             'title' => $this->faker->sentence,
             'body' => $this->faker->paragraph,
-            'email' => $this->faker->email,
             'accept' => $this->faker->randomElement(['pending', 'accepted', 'rejected']),
         ];
     }

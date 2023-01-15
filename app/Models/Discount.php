@@ -40,6 +40,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read int|null $products_count
  * @property-read \App\Models\User|null $user
  * @method static \Illuminate\Database\Eloquent\Builder|Discount whereUserId($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Shop[] $shops
+ * @property-read int|null $shops_count
  */
 class Discount extends BaseModel
 {
@@ -53,5 +55,10 @@ class Discount extends BaseModel
     public function products()
     {
         return $this->belongsToMany(Product::class,'discount_product');
+    }
+
+    public function shops()
+    {
+        return $this->belongsToMany(Shop::class,'shop_product');
     }
 }

@@ -10,67 +10,81 @@ use Illuminate\Http\Request;
 class ArticleCategoryController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @api {get} /article-category article-category.index
+     * @apiName article-category.index
+     * @apiGroup article-category
+     * @apiParam {Number} [per_page=10] per page
      */
     public function index(Request $request)
     {
-        $q = ArticleCategory::query();
+        $articleCategories = ArticleCategory::query()
+            ->where('user_id', auth()->id())
+            ->where('shop_id', $request->input('shop_id'))
+            ->latest()
+            ->paginate($request->input('per_page', 10));
 
-        if ($request->has('search')) {
-            $q->where('name', 'like', '%' . $request->search . '%');
-        }
-
-        $result = $q->latest()->paginate($request->input('per_page', 10));
-
-        return response()->json($result);
+        return response()->json($articleCategories);
     }
 
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param \App\Http\Requests\StoreArticleCategoryRequest $request
-     * @return \Illuminate\Http\Response
+     * @api {post} /article-category article-category.store
+     * @apiName article-category.store
+     * @apiGroup article-category
+     * @apiBody {String} name
+     * @apiBody {String} description
+     * @apiBody {Number} shop_id
      */
     public function store(StoreArticleCategoryRequest $request)
     {
-        //
+        $request->merge(['user_id' => auth()->id()]);
+        $articleCategory = ArticleCategory::query()->create($request->validated());
+
+        return response()->json($articleCategory);
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param \App\Models\ArticleCategory $articleCategory
-     * @return \Illuminate\Http\Response
+     * @api {get} /article-category/:id article-category.show
+     * @apiName article-category.show
+     * @apiGroup article-category
+     * @apiParam {Number} id model id
      */
     public function show(ArticleCategory $articleCategory)
     {
-        //
+        return response()->json($articleCategory);
     }
 
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param \App\Http\Requests\UpdateArticleCategoryRequest $request
-     * @param \App\Models\ArticleCategory $articleCategory
-     * @return \Illuminate\Http\Response
+     * @api {put} /article-category/:id article-category.update
+     * @apiName article-category.update
+     * @apiGroup article-category
+     * @apiBody {String} name
+     * @apiBody {String} description
+     * @apiBody {Number} sort
+     * @apiBody {Number} shop_id
+     * @apiParam {Number} id model id
      */
     public function update(UpdateArticleCategoryRequest $request, ArticleCategory $articleCategory)
     {
-        //
+        $articleCategory->update($request->validated());
+
+        return response()->json($articleCategory);
     }
 
+
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param \App\Models\ArticleCategory $articleCategory
-     * @return \Illuminate\Http\Response
+     * @api {delete} /article-category/:id article-category.destroy
+     * @apiName article-category.destroy
+     * @apiGroup article-category
+     * @apiParam {Number} id model id
      */
     public function destroy(ArticleCategory $articleCategory)
     {
-        //
+        $articleCategory->delete();
+
+        return response()->json([
+            'message' => 'دسته بندی مقاله با موفقیت حذف شد',
+        ]);
     }
 }

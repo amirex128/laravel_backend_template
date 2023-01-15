@@ -5,63 +5,90 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreArticleRequest;
 use App\Http\Requests\UpdateArticleRequest;
 use App\Models\Article;
+use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
+
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @api {get} /article article.index
+     * @apiName article.index
+     * @apiGroup article
+     * @apiParam {Number} [per_page=10] per page
      */
     public function index(Request $request)
     {
-        //
+        $articles = Article::query()
+            ->where('user_id', auth()->id())
+            ->where('shop_id', $request->input('shop_id'))
+            ->latest()
+            ->paginate($request->input('per_page', 10));
+
+        return response()->json($articles);
     }
 
 
+
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreArticleRequest  $request
-     * @return \Illuminate\Http\Response
+     * @api {post} /article article.store
+     * @apiName article.store
+     * @apiGroup article
+     * @apiBody {String} title title
+     * @apiBody {String} body body
+     * @apiBody {Number} gallery_id gallery_id
+     * @apiBody {Number} shop_id shop_id
      */
     public function store(StoreArticleRequest $request)
     {
-        //
+        $request->merge(['user_id' => auth()->id()]);
+        $article = Article::query()->create($request->validated());
+
+        return response()->json($article);
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Article  $article
-     * @return \Illuminate\Http\Response
+     * @api {get} /article/:id article.show
+     * @apiName article.show
+     * @apiGroup article
+     * @apiParam {Number} id model id
      */
     public function show(Article $article)
     {
-        //
+        return response()->json($article);
     }
 
 
+
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateArticleRequest  $request
-     * @param  \App\Models\Article  $article
-     * @return \Illuminate\Http\Response
+     * @api {put} /article/:id article.update
+     * @apiName article.update
+     * @apiGroup article
+     * @apiBody {String} title title
+     * @apiBody {String} body body
+     * @apiBody {Number} gallery_id gallery_id
+     * @apiBody {Number} shop_id shop_id
+     * @apiParam {Number} id model id
      */
     public function update(UpdateArticleRequest $request, Article $article)
     {
-        //
+        $article->update($request->validated());
+
+        return response()->json($article);
     }
 
+
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Article  $article
-     * @return \Illuminate\Http\Response
+     * @api {delete} /article/:id article.destroy
+     * @apiName article.destroy
+     * @apiGroup article
+     * @apiParam {Number} id model id
      */
     public function destroy(Article $article)
     {
-        //
+        $article->delete();
+
+        return response()->json([
+            'message' => 'مقاله با موفقیت حذف شد',
+        ]);
     }
 }
