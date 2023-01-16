@@ -14,6 +14,7 @@ class TicketController extends Controller
      * @api {get} /ticket ticket.index
      * @apiName ticket.index
      * @apiGroup ticket
+     * @apiHeader {String} Authorization token
      */
     public function index(Request $request)
     {
@@ -29,6 +30,7 @@ class TicketController extends Controller
      * @api {post} /ticket ticket.store
      * @apiName ticket.store
      * @apiGroup ticket
+     * @apiHeader {String} Authorization token
      * @apiBody {Number} parent_id parent_id
      * @apiBody {String} title title
      * @apiBody {String} body body
@@ -45,6 +47,7 @@ class TicketController extends Controller
      * @api {get} /ticket/{ticket} ticket.show
      * @apiName ticket.show
      * @apiGroup ticket
+     * @apiHeader {String} Authorization token
      */
     public function show(Ticket $ticket)
     {
@@ -60,6 +63,7 @@ class TicketController extends Controller
      * @api {put} /ticket/{ticket} ticket.update
      * @apiName ticket.update
      * @apiGroup ticket
+     * @apiHeader {String} Authorization token
      * @apiBody {String} title title
      * @apiBody {String} body body
      * @apiBody {Number} gallery_id gallery_id
@@ -74,6 +78,7 @@ class TicketController extends Controller
      * @api {delete} /ticket/{ticket} ticket.destroy
      * @apiName ticket.destroy
      * @apiGroup ticket
+     * @apiHeader {String} Authorization token
      */
     public function destroy(Ticket $ticket)
     {

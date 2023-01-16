@@ -14,6 +14,7 @@ class ThemeController extends Controller
      * @api {get} /theme theme.index
      * @apiName theme.index
      * @apiGroup theme
+     * @apiHeader {String} Authorization token
      */
     public function index(Request $request)
     {
@@ -28,6 +29,7 @@ class ThemeController extends Controller
      * @api {get} /shop/{shop} shop.show
      * @apiName shop.show
      * @apiGroup shop
+     * @apiHeader {String} Authorization token
      */
     public function show(Theme $theme)
     {

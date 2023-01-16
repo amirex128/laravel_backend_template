@@ -24,6 +24,7 @@ return new class extends Migration {
             $table->string('email')->nullable();
             $table->string('website')->nullable();
             $table->integer('send_price')->default(0);
+            $table->integer('tax')->default(0);
             $table->foreignIdFor(\App\Models\User::class);
             $table->foreignIdFor(\App\Models\Gallery::class)->nullable();
             $table->foreignIdFor(\App\Models\Theme::class)->default(1);

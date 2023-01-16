@@ -17,6 +17,7 @@ class GalleryController extends Controller
      * @api {get} /gallery gallery.index
      * @apiName gallery.index
      * @apiGroup gallery
+     * @apiHeader {String} Authorization token
      * @apiParam {Number} [per_page=10] per page
      */
     public function index(Request $request)
@@ -30,6 +31,7 @@ class GalleryController extends Controller
      * @api {post} /gallery gallery.store
      * @apiName gallery.store
      * @apiGroup gallery
+     * @apiHeader {String} Authorization token
      * @apiBody {File} file file
      * @apiBody {String} type type_consist of image or video or file
      */
@@ -109,6 +111,7 @@ class GalleryController extends Controller
      * @api {delete} /gallery/{id} gallery.destroy
      * @apiName gallery.destroy
      * @apiGroup gallery
+     * @apiHeader {String} Authorization token
      */
     public function destroy(Gallery $gallery)
     {

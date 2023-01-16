@@ -8,6 +8,7 @@ use App\Http\Requests\LoginRegisterRequest;
 use App\Http\Requests\LoginWithCodeRequest;
 use App\Http\Requests\LoginWithPassRequest;
 use App\Http\Requests\RegisterPassRequest;
+use App\Models\Customer;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -22,6 +23,7 @@ class CustomerApiAuthController extends Controller
      * @api {put} /customer/:id customer.update
      * @apiName customer.update
      * @apiGroup customer
+     * @apiHeader {String} Authorization token
      * @apiBody {String} full_name full_name
      * @apiBody {Number} mobile mobile
      * @apiBody {String} address address
@@ -88,7 +90,7 @@ class CustomerApiAuthController extends Controller
 
     public function loginWithCode(LoginWithCodeRequest $request)
     {
-        $customer = User::query()->where('mobile', $request->mobile)->first();
+        $customer = Customer::query()->where('mobile', $request->mobile)->first();
         if (empty($customer)) {
             return response()->json([
                 "message" => "کاربری با این شماره موبایل یافت نشد",

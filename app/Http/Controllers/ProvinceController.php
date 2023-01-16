@@ -14,6 +14,7 @@ class ProvinceController extends Controller
      * @api {get} /province province.index
      * @apiName province.index
      * @apiGroup province
+     * @apiHeader {String} Authorization token
      * @apiParam {Number} [per_page=10] per page
      */
     public function index(Request $request)

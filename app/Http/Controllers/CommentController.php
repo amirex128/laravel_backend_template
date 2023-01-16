@@ -15,6 +15,7 @@ class CommentController extends Controller
      * @api {get} /comment comment.index
      * @apiName comment.index
      * @apiGroup comment
+     * @apiHeader {String} Authorization token
      * @apiParam {Number} [per_page=10] per page
      */
     public function index(Request $request)
@@ -32,6 +33,7 @@ class CommentController extends Controller
      * @api {post} /comment comment.store
      * @apiName comment.store
      * @apiGroup comment
+     * @apiHeader {String} Authorization token
      * @apiBody  {String} title title
      * @apiBody {String} body body
      * @apiBody {Number} shop_id shop_id
@@ -51,6 +53,7 @@ class CommentController extends Controller
      * @api {get} /comment/:id comment.show
      * @apiName comment.show
      * @apiGroup comment
+     * @apiHeader {String} Authorization token
      * @apiParam {Number} id model id
      */
     public function show(Comment $comment)
@@ -63,6 +66,7 @@ class CommentController extends Controller
      * @api {delete} /comment/:id comment.destroy
      * @apiName comment.destroy
      * @apiGroup comment
+     * @apiHeader {String} Authorization token
      * @apiParam {Number} id model id
      */
     public function destroy(Comment $comment)

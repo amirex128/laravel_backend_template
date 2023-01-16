@@ -15,6 +15,7 @@ class CustomerController extends Controller
      * @api {get} /customer customer.index
      * @apiName customer.index
      * @apiGroup customer
+     * @apiHeader {String} Authorization token
      * @apiParam {Number} [per_page=10] per page
      */
     public function index(Request $request)
@@ -28,6 +29,7 @@ class CustomerController extends Controller
      * @api {get} /customer/:id customer.show
      * @apiName customer.show
      * @apiGroup customer
+     * @apiHeader {String} Authorization token
      * @apiParam {Number} id model id
      */
     public function show(Customer $customer)
@@ -40,6 +42,7 @@ class CustomerController extends Controller
      * @api {put} /customer/:id customer.update
      * @apiName customer.update
      * @apiGroup customer
+     * @apiHeader {String} Authorization token
      * @apiBody {String} full_name full_name
      * @apiBody {Number} mobile mobile
      * @apiBody {String} address address

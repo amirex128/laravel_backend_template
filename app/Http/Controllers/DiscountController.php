@@ -14,6 +14,7 @@ class DiscountController extends Controller
      * @api {get} /discount discount.index
      * @apiName discount.index
      * @apiGroup discount
+     * @apiHeader {String} Authorization token
      * @apiParam {Number} [per_page=10] per page
      */
     public function index(Request $request)
@@ -26,6 +27,7 @@ class DiscountController extends Controller
      * @api {post} /discount discount.store
      * @apiName discount.store
      * @apiGroup discount
+     * @apiHeader {String} Authorization token
      * @apiBody {String} code code
      * @apiBody {Date} started_at started_at
      * @apiBody {Date} ended_at ended_at
@@ -34,6 +36,7 @@ class DiscountController extends Controller
      * @apiBody {Number} percent percent
      * @apiBody {Boolean} status  status_consist of amount or percent
      * @apiBody {String} type type_consist true or false
+     * @apiBody {String} model model_consist shop or product
      * @apiBody {Array} product_ids product_ids array of ids
      * @apiBody {Array} shop_ids shop_ids array of ids
      */
@@ -41,8 +44,11 @@ class DiscountController extends Controller
     {
         $request->merge(['user_id' => auth()->id()]);
         $discount = Discount::create($request->validated());
-        $discount->products()->sync($request->input('products'));
-        $discount->shops()->sync($request->input('shops'));
+        if ($request->input('model') === 'shop') {
+            $discount->shops()->sync($request->input('shop_ids'));
+        } elseif ($request->input('model') === 'product') {
+            $discount->products()->sync($request->input('product_ids'));
+        }
         return response()->json($discount);
     }
 
@@ -50,6 +56,7 @@ class DiscountController extends Controller
      * @api {get} /discount/:id discount.show
      * @apiName discount.show
      * @apiGroup discount
+     * @apiHeader {String} Authorization token
      * @apiParam {Number} id model id
      */
     public function show(Discount $discount)
@@ -61,6 +68,7 @@ class DiscountController extends Controller
      * @api {put} /discount/:id discount.update
      * @apiName discount.update
      * @apiGroup discount
+     * @apiHeader {String} Authorization token
      * @apiBody {String} code code
      * @apiBody {Date} started_at started_at
      * @apiBody {Date} ended_at ended_at
@@ -76,8 +84,11 @@ class DiscountController extends Controller
     public function update(UpdateDiscountRequest $request, Discount $discount)
     {
         $discount->update($request->validated());
-        $discount->products()->sync($request->input('products'));
-        $discount->shops()->sync($request->input('shops'));
+        if ($request->input('model') === 'shop') {
+            $discount->shops()->sync($request->input('shop_ids'));
+        } elseif ($request->input('model') === 'product') {
+            $discount->products()->sync($request->input('product_ids'));
+        }
         return response()->json($discount);
     }
 
@@ -85,6 +96,7 @@ class DiscountController extends Controller
      * @api {delete} /discount/:id discount.destroy
      * @apiName discount.destroy
      * @apiGroup discount
+     * @apiHeader {String} Authorization token
      * @apiParam {Number} id model id
      */
     public function destroy(Discount $discount)

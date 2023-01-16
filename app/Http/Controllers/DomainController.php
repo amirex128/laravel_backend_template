@@ -14,6 +14,7 @@ class DomainController extends Controller
      * @api {get} /domain domain.index
      * @apiName domain.index
      * @apiGroup domain
+     * @apiHeader {String} Authorization token
      * @apiParam {Number} [per_page=10] per page
      */
     public function index(Request $request)
@@ -26,6 +27,7 @@ class DomainController extends Controller
      * @api {post} /domain domain.store
      * @apiName domain.store
      * @apiGroup domain
+     * @apiHeader {String} Authorization token
      * @apiBody {String} name name
      * @apiBody {String} type type_consist of subdomain or domain
      * @apiBody {Number} shop_id shop_id
@@ -41,6 +43,7 @@ class DomainController extends Controller
      * @api {get} /domain/:id domain.show
      * @apiName domain.show
      * @apiGroup domain
+     * @apiHeader {String} Authorization token
      * @apiParam {Number} id model id
      */
     public function show(Domain $domain)
@@ -53,6 +56,7 @@ class DomainController extends Controller
      * @api {put} /domain/:id domain.update
      * @apiName domain.update
      * @apiGroup domain
+     * @apiHeader {String} Authorization token
      * @apiParam {Number} id model id
      * @apiBody {String} name name
      * @apiBody {String} type type_consist of subdomain or domain
@@ -68,6 +72,7 @@ class DomainController extends Controller
      * @api {delete} /domain/:id domain.destroy
      * @apiName domain.destroy
      * @apiGroup domain
+     * @apiHeader {String} Authorization token
      * @apiParam {Number} id model id
      */
     public function destroy(Domain $domain)

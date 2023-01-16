@@ -27,8 +27,6 @@ class ShopFactory extends Factory
             'email' => $this->faker->email,
             'website' => $this->faker->url,
             'send_price' => $this->faker->numberBetween(0, 1000),
-            'type' => $this->faker->randomElement(['instagram', 'telegram', 'website']),
-
         ];
     }
 }

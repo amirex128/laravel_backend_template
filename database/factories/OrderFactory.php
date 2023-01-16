@@ -24,7 +24,7 @@ class OrderFactory extends Factory
             'total_product_discount_price' => $this->faker->numberBetween(1000, 100000),
             'total_final_price' => $this->faker->numberBetween(1000, 100000),
             'send_price' => $this->faker->numberBetween(1000, 100000),
-            'status' => $this->faker->randomElement(['pending', 'paid', 'shipped', 'delivered', 'canceled']),
+            'status' => $this->faker->randomElement(['wait_for_pay','wait_for_try_pay','paid','wait_for_sender','wait_for_delivery','delivered','returned_timeout','wait_for_accept_returned','reject_returned','wait_for_sender_returned','delivered_returned','wait_for_returned_pay_back','returned_paid']),
             'description' => $this->faker->text,
             'package_size' => $this->faker->randomElement(['small', 'medium', 'large']),
             'tracking_code' => $this->faker->uuid,

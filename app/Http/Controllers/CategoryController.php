@@ -14,6 +14,7 @@ class CategoryController extends Controller
      * @api {get} /category category.index
      * @apiName category.index
      * @apiGroup category
+     * @apiHeader {String} Authorization token
      * @apiParam {Number} [per_page=10] per page
      */
     public function index(Request $request)
@@ -32,6 +33,7 @@ class CategoryController extends Controller
      * @api {post} /category category.store
      * @apiName category.store
      * @apiGroup category
+     * @apiHeader {String} Authorization token
      * @apiBody  {String} name name
      * @apiBody {String} description description
      * @apiBody {Number} shop_id shop_id
@@ -49,6 +51,7 @@ class CategoryController extends Controller
      * @api {get} /category/:id category.show
      * @apiName category.show
      * @apiGroup category
+     * @apiHeader {String} Authorization token
      * @apiParam {Number} id model id
      */
     public function show(Category $category)
@@ -61,6 +64,7 @@ class CategoryController extends Controller
      * @api {put} /category/:id category.update
      * @apiName category.update
      * @apiGroup category
+     * @apiHeader {String} Authorization token
      * @apiBody {String} name name
      * @apiBody {String} description description
      * @apiBody {Number} sort sort
@@ -78,6 +82,7 @@ class CategoryController extends Controller
      * @api {delete} /category/:id category.destroy
      * @apiName category.destroy
      * @apiGroup category
+     * @apiHeader {String} Authorization token
      * @apiParam {Number} id model id
      */
     public function destroy(Category $category)

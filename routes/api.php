@@ -74,7 +74,7 @@ Route::prefix('auth/admin')->group(function () {
     Route::post('login/pass', [AdminApiAuthController::class, 'loginWithPass'])->name('loginWithPass');
 });
 
-Route::middleware('auth:api_admin')->get('/user', function (Request $request) {
+Route::middleware('auth:api_user')->get('/user', function (Request $request) {
     return $request->user();
 });
 
@@ -169,14 +169,6 @@ Route::middleware('auth:api_user')->prefix('order')->name('order.')->group(funct
     Route::delete('/{order}', [OrderController::class, 'destroy'])->name('destroy')->can('delete', 'order');
 });
 
-Route::middleware('auth:api_user')->prefix('orderItem')->name('orderItem.')->group(function () {
-    Route::get('/', [OrderItemController::class, 'index'])->name('index')->can('index', OrderItem::class);
-    Route::post('/', [OrderItemController::class, 'store'])->name('store')->can('create', OrderItem::class);
-    Route::get('/{orderItem}', [OrderItemController::class, 'show'])->name('show')->can('view', 'orderItem');
-    Route::patch('/{orderItem}', [OrderItemController::class, 'update'])->name('update')->can('update', 'orderItem');
-    Route::delete('/{orderItem}', [OrderItemController::class, 'destroy'])->name('destroy')->can('delete', 'orderItem');
-});
-
 Route::middleware('auth:api_user')->prefix('product')->name('product.')->group(function () {
     Route::get('/', [ProductController::class, 'index'])->name('index')->can('index', Product::class);
     Route::post('/', [ProductController::class, 'store'])->name('store')->can('create', Product::class);
@@ -204,4 +196,13 @@ Route::middleware('auth:api_user')->prefix('ticket')->name('ticket.')->group(fun
     Route::get('/{ticket}', [TicketController::class, 'show'])->name('show')->can('view', 'ticket');
     Route::patch('/{ticket}', [TicketController::class, 'update'])->name('update')->can('update', 'ticket');
     Route::delete('/{ticket}', [TicketController::class, 'destroy'])->name('destroy')->can('delete', 'ticket');
+});
+
+
+Route::middleware('auth:api_customer')->prefix('customer')->name('customer.')->group(function () {
+    Route::prefix('order')->name('order.')->group(function () {
+        Route::get('/', [OrderController::class, 'customerIndex'])->name('customer.index')->can('customerIndex', Order::class);
+        Route::post('/', [OrderController::class, 'customerStore'])->name('customer.store')->can('customerCreate', Order::class);
+        Route::get('/{order}', [OrderController::class, 'customerShow'])->name('customer.show')->can('customerView', 'order');
+    });
 });

@@ -34,7 +34,13 @@ class StoreOrderRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'shop_id'=>'required|exists:shops,id',
+            'discount_id'=>'filled|exists:discounts,id',
+            'description'=>'filled|string',
+            'order_items'=>'required|array',
+            'order_items.*.product_id'=>'required|exists:products,id',
+            'order_items.*.option_id'=>'required|exists:options,id',
+            'order_items.*.quantity'=>'required|integer',
         ];
     }
 }

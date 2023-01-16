@@ -14,6 +14,7 @@ class AddressController extends Controller
      * @api {get} /address address.index
      * @apiName address.index
      * @apiGroup address
+     * @apiHeader {String} Authorization token
      * @apiParam {Number} [per_page=10] per page
      */
     public function index(Request $request)
@@ -42,6 +43,7 @@ class AddressController extends Controller
      * @apiBody {Number} long
      * @apiBody {Number} city_id
      * @apiBody {Number} province_id
+     * @apiHeader {String} Authorization token
      */
     public function store(StoreAddressRequest $request)
     {
@@ -56,6 +58,7 @@ class AddressController extends Controller
      * @apiName address.show
      * @apiParam {Number} id model id
      * @apiGroup address
+     * @apiHeader {String} Authorization token
      */
     public function show(Address $address)
     {
@@ -66,6 +69,7 @@ class AddressController extends Controller
      * @api {post} /address/:id address.update
      * @apiName address.update
      * @apiGroup address
+     * @apiHeader {String} Authorization token
      * @apiParam {Number} id model id
      * @apiBody {String} name
      * @apiBody {String} address
@@ -91,6 +95,7 @@ class AddressController extends Controller
      * @apiName address.destroy
      * @apiParam {Number} id model id
      * @apiGroup address
+     * @apiHeader {String} Authorization token
      */
     public function destroy(Address $address)
     {

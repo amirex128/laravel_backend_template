@@ -41,6 +41,7 @@ class StoreDiscountRequest extends FormRequest
             'value'=>'required|integer',
             'percent'=>'required|integer',
             'type'=>'required|in:percent,amount',
+            'model'=>'required|in:shop,product',
             'product_ids'=>'filled|array',
             'shop_ids'=>'filled|array',
         ];

@@ -14,6 +14,7 @@ class ProductController extends Controller
      * @api {get} /product product.index
      * @apiName product.index
      * @apiGroup product
+     * @apiHeader {String} Authorization token
      * @apiParam {Number} [per_page=10] per page
      */
     public function index(Request $request)
@@ -30,6 +31,7 @@ class ProductController extends Controller
      * @api {post} /product product.store
      * @apiName product.store
      * @apiGroup product
+     * @apiHeader {String} Authorization token
      * @apiBody {String} name name
      * @apiBody {String} description description
      * @apiBody {Number} quantity quantity
@@ -47,6 +49,7 @@ class ProductController extends Controller
      * @api {get} /product/{product} product.show
      * @apiName product.show
      * @apiGroup product
+     * @apiHeader {String} Authorization token
      */
     public function show(Product $product)
     {
@@ -58,6 +61,7 @@ class ProductController extends Controller
      * @api {put} /product/{product} product.update
      * @apiName product.update
      * @apiGroup product
+     * @apiHeader {String} Authorization token
      * @apiBody {String} name name
      * @apiBody {String} description description
      * @apiBody {Number} quantity quantity

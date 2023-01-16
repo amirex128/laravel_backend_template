@@ -14,6 +14,7 @@ class ArticleController extends Controller
      * @api {get} /article article.index
      * @apiName article.index
      * @apiGroup article
+     * @apiHeader {String} Authorization token
      * @apiParam {Number} [per_page=10] per page
      */
     public function index(Request $request)
@@ -33,6 +34,7 @@ class ArticleController extends Controller
      * @api {post} /article article.store
      * @apiName article.store
      * @apiGroup article
+     * @apiHeader {String} Authorization token
      * @apiBody {String} title title
      * @apiBody {String} body body
      * @apiBody {Number} gallery_id gallery_id
@@ -50,6 +52,7 @@ class ArticleController extends Controller
      * @api {get} /article/:id article.show
      * @apiName article.show
      * @apiGroup article
+     * @apiHeader {String} Authorization token
      * @apiParam {Number} id model id
      */
     public function show(Article $article)
@@ -63,6 +66,7 @@ class ArticleController extends Controller
      * @api {put} /article/:id article.update
      * @apiName article.update
      * @apiGroup article
+     * @apiHeader {String} Authorization token
      * @apiBody {String} title title
      * @apiBody {String} body body
      * @apiBody {Number} gallery_id gallery_id
@@ -81,6 +85,7 @@ class ArticleController extends Controller
      * @api {delete} /article/:id article.destroy
      * @apiName article.destroy
      * @apiGroup article
+     * @apiHeader {String} Authorization token
      * @apiParam {Number} id model id
      */
     public function destroy(Article $article)

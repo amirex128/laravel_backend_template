@@ -2,6 +2,7 @@
 
 namespace App\Policies;
 
+use App\Models\Customer;
 use App\Models\Order;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
@@ -16,9 +17,20 @@ class OrderPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
+    public function customerIndex(Customer $user)
+    {
+        return true;
+    }
+
+    /**
+     * Determine whether the user can view any models.
+     *
+     * @param  \App\Models\User  $user
+     * @return \Illuminate\Auth\Access\Response|bool
+     */
     public function index(User $user)
     {
-        //
+        return true;
     }
 
     /**
@@ -30,7 +42,19 @@ class OrderPolicy
      */
     public function view(User $user, Order $order)
     {
-        //
+        return $user->id === $order->user_id;
+    }
+
+    /**
+     * Determine whether the user can view the model.
+     *
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\Order  $order
+     * @return \Illuminate\Auth\Access\Response|bool
+     */
+    public function customerView(Customer $user, Order $order)
+    {
+        return $user->id === $order->customer_id;
     }
 
     /**
@@ -41,7 +65,18 @@ class OrderPolicy
      */
     public function create(User $user)
     {
-        //
+        return true;
+    }
+
+    /**
+     * Determine whether the user can create models.
+     *
+     * @param  \App\Models\User  $user
+     * @return \Illuminate\Auth\Access\Response|bool
+     */
+    public function customerCreate(Customer $user)
+    {
+        return true;
     }
 
     /**
@@ -53,7 +88,7 @@ class OrderPolicy
      */
     public function update(User $user, Order $order)
     {
-        //
+        return $user->id === $order->user_id;
     }
 
     /**
@@ -65,7 +100,7 @@ class OrderPolicy
      */
     public function delete(User $user, Order $order)
     {
-        //
+        return $user->id === $order->user_id;
     }
 
     /**
@@ -77,7 +112,7 @@ class OrderPolicy
      */
     public function restore(User $user, Order $order)
     {
-        //
+        return $user->id === $order->user_id;
     }
 
     /**
@@ -89,6 +124,6 @@ class OrderPolicy
      */
     public function forceDelete(User $user, Order $order)
     {
-        //
+        return $user->id === $order->user_id;
     }
 }

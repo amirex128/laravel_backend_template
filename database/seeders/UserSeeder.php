@@ -43,11 +43,14 @@ class UserSeeder extends Seeder
             'mobile' => '09024809750',
             'password' => Hash::make('123456789'),
             'email' => 'amirex128@gmail.com'
-        ] )->create();
+        ])->create();
 
         Customer::factory()->state([
             'mobile' => '09024809750',
-        ]);
+            'verify_code' => '1234',
+        ])->for(Province::find(rand(1, 31)))
+            ->for(City::find(rand(1, 31)))
+            ->create();
 
         Admin::factory()->count(4)->create();
 

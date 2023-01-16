@@ -1,7 +1,22 @@
 {
-  "name": "Selloora Panel",
-  "version": "0.1.0",
-  "description": "Api Panel for Selloora",
-  "title": "Selloora Panel",
-  "url" : "https://hamyarsale.ir/api"
+  "name": "Selloora admin and user panel",
+  "version": "0.3.0",
+  "description": "Documentation for the REST api access provided at AcmeCorp",
+  "title": "Custom apiDoc browser title",
+  "url" : "http://hamyarsale.test/api",
+  "sampleUrl": "http://hamyarsale.test/api",
+  "header": {
+    "title": "Introduction",
+    "filename": "header.md"
+  },
+  "footer": {
+    "title": "Best practices",
+    "filename": "footer.md"
+  },
+  "template": {
+    "showRequiredLabels": true,
+    "withCompare": true,
+    "withGenerator": true,
+    "aloneDisplay": false
+  }
 }

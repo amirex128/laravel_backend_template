@@ -15,6 +15,7 @@ class OptionController extends Controller
      * @api {get} /option option.index
      * @apiName option.index
      * @apiGroup option
+     * @apiHeader {String} Authorization token
      */
     public function index(Request $request,Product $product)
     {
@@ -31,6 +32,7 @@ class OptionController extends Controller
      * @api {post} /option option.store
      * @apiName option.store
      * @apiGroup option
+     * @apiHeader {String} Authorization token
      * @apiBody {String} name name
      * @apiBody {Number} price price
      * @apiBody {Number} quantity quantity
@@ -47,6 +49,7 @@ class OptionController extends Controller
      * @api {put} /option/{option} option.update
      * @apiName option.update
      * @apiGroup option
+     * @apiHeader {String} Authorization token
      * @apiBody {String} name name
      * @apiBody {Number} price price
      * @apiBody {Number} quantity quantity
@@ -61,6 +64,7 @@ class OptionController extends Controller
      * @api {delete} /option/{option} option.destroy
      * @apiName option.destroy
      * @apiGroup option
+     * @apiHeader {String} Authorization token
      */
     public function destroy(Option $option)
     {

@@ -13,6 +13,7 @@ class ArticleCategoryController extends Controller
      * @api {get} /article-category article-category.index
      * @apiName article-category.index
      * @apiGroup article-category
+     * @apiHeader {String} Authorization token
      * @apiParam {Number} [per_page=10] per page
      */
     public function index(Request $request)
@@ -31,6 +32,7 @@ class ArticleCategoryController extends Controller
      * @api {post} /article-category article-category.store
      * @apiName article-category.store
      * @apiGroup article-category
+     * @apiHeader {String} Authorization token
      * @apiBody {String} name
      * @apiBody {String} description
      * @apiBody {Number} shop_id
@@ -47,6 +49,7 @@ class ArticleCategoryController extends Controller
      * @api {get} /article-category/:id article-category.show
      * @apiName article-category.show
      * @apiGroup article-category
+     * @apiHeader {String} Authorization token
      * @apiParam {Number} id model id
      */
     public function show(ArticleCategory $articleCategory)
@@ -59,6 +62,7 @@ class ArticleCategoryController extends Controller
      * @api {put} /article-category/:id article-category.update
      * @apiName article-category.update
      * @apiGroup article-category
+     * @apiHeader {String} Authorization token
      * @apiBody {String} name
      * @apiBody {String} description
      * @apiBody {Number} sort
@@ -77,6 +81,7 @@ class ArticleCategoryController extends Controller
      * @api {delete} /article-category/:id article-category.destroy
      * @apiName article-category.destroy
      * @apiGroup article-category
+     * @apiHeader {String} Authorization token
      * @apiParam {Number} id model id
      */
     public function destroy(ArticleCategory $articleCategory)

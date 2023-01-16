@@ -14,6 +14,7 @@ class ShopController extends Controller
      * @api {get} /shop shop.index
      * @apiName shop.index
      * @apiGroup shop
+     * @apiHeader {String} Authorization token
      * @apiParam {Number} [per_page=10] per page
      */
     public function index(Request $request)
@@ -29,6 +30,7 @@ class ShopController extends Controller
      * @api {post} /shop shop.store
      * @apiName shop.store
      * @apiGroup shop
+     * @apiHeader {String} Authorization token
      * @apiBody {String} name name
      * @apiBody {String} description description
      * @apiBody {Number} phone phone
@@ -54,6 +56,7 @@ class ShopController extends Controller
      * @api {get} /shop/{shop} shop.show
      * @apiName shop.show
      * @apiGroup shop
+     * @apiHeader {String} Authorization token
      */
     public function show(Shop $shop)
     {
@@ -65,6 +68,7 @@ class ShopController extends Controller
      * @api {put} /shop/{shop} shop.update
      * @apiName shop.update
      * @apiGroup shop
+     * @apiHeader {String} Authorization token
      * @apiBody {String} name name
      * @apiBody {String} description description
      * @apiBody {Number} phone phone
@@ -89,6 +93,7 @@ class ShopController extends Controller
      * @api {delete} /shop/{shop} shop.destroy
      * @apiName shop.destroy
      * @apiGroup shop
+     * @apiHeader {String} Authorization token
      */
     public function destroy(Shop $shop)
     {

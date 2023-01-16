@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      *
@@ -14,7 +13,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('discounts', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->string('code');
             $table->dateTime('started_at');
             $table->dateTime('ended_at');
@@ -23,16 +22,17 @@ return new class extends Migration
             $table->integer('percent');
             $table->boolean('status')->default(true);
             $table->enum('type', ['percent', 'amount']);
+            $table->enum('model', ['shop', 'product']);
             $table->foreignIdFor(\App\Models\User::class);
             $table->timestamps();
         });
 
         Schema::create('discount_product', function (Blueprint $table) {
-            $table->foreignIdFor(\App\Models\Discount::class);
+            $table->foreignUuid('discount_id');
             $table->foreignIdFor(\App\Models\Product::class);
         });
         Schema::create('shop_product', function (Blueprint $table) {
-            $table->foreignIdFor(\App\Models\Discount::class);
+            $table->foreignUuid('discount_id');
             $table->foreignIdFor(\App\Models\Shop::class);
         });
     }
