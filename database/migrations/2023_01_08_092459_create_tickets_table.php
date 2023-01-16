@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
+            $table->integer('parent_id')->nullable();
             $table->boolean('is_answer')->default(false);
-            $table->string('guest_name')->nullable();
-            $table->string('guest_mobile')->nullable();
+            $table->boolean('visited')->default(false);
             $table->string('title');
             $table->longText('body')->nullable();
             $table->foreignIdFor(\App\Models\User::class)->nullable();

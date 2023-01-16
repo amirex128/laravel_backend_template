@@ -5,63 +5,81 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreTicketRequest;
 use App\Http\Requests\UpdateTicketRequest;
 use App\Models\Ticket;
+use Illuminate\Http\Request;
 
 class TicketController extends Controller
 {
+
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @api {get} /ticket ticket.index
+     * @apiName ticket.index
+     * @apiGroup ticket
      */
     public function index(Request $request)
     {
-        //
+        $tickets = Ticket::query()
+            ->where('user_id', auth()->id())
+            ->latest()
+            ->get();
+        return response()->json($tickets);
     }
 
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreTicketRequest  $request
-     * @return \Illuminate\Http\Response
+     * @api {post} /ticket ticket.store
+     * @apiName ticket.store
+     * @apiGroup ticket
+     * @apiBody {Number} parent_id parent_id
+     * @apiBody {String} title title
+     * @apiBody {String} body body
+     * @apiBody {Number} gallery_id gallery_id
      */
     public function store(StoreTicketRequest $request)
     {
-        //
+        $request->merge(['user_id' => auth()->id()]);
+        $ticket = Ticket::create($request->validated());
+        return response()->json($ticket);
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Ticket  $ticket
-     * @return \Illuminate\Http\Response
+     * @api {get} /ticket/{ticket} ticket.show
+     * @apiName ticket.show
+     * @apiGroup ticket
      */
     public function show(Ticket $ticket)
     {
-        //
+        if ($ticket->visited === false) {
+            $ticket->visited = true;
+            $ticket->save();
+        }
+        return response()->json($ticket->with('children'));
     }
 
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateTicketRequest  $request
-     * @param  \App\Models\Ticket  $ticket
-     * @return \Illuminate\Http\Response
+     * @api {put} /ticket/{ticket} ticket.update
+     * @apiName ticket.update
+     * @apiGroup ticket
+     * @apiBody {String} title title
+     * @apiBody {String} body body
+     * @apiBody {Number} gallery_id gallery_id
      */
     public function update(UpdateTicketRequest $request, Ticket $ticket)
     {
-        //
+        $ticket->update($request->validated());
+        return response()->json($ticket);
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Ticket  $ticket
-     * @return \Illuminate\Http\Response
+     * @api {delete} /ticket/{ticket} ticket.destroy
+     * @apiName ticket.destroy
+     * @apiGroup ticket
      */
     public function destroy(Ticket $ticket)
     {
-        //
+        $ticket->delete();
+        return response()->json([
+            'message' => 'تیکت با موفقیت حذف شد',
+        ]);
     }
 }

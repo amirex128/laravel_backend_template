@@ -34,7 +34,10 @@ class StoreTicketRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'parent_id'=>'filled|exists:tickets,id',
+            'title'=>'required|string|max:255',
+            'body'=>'required|string',
+            'gallery_id'=>'filled|exists:galleries,id',
         ];
     }
 }

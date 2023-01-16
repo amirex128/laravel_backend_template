@@ -25,7 +25,7 @@ class StoreProductRequest extends FormRequest
     {
         return [];
     }
-    
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -34,7 +34,11 @@ class StoreProductRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'quantity' => 'required|integer',
+            'price' => 'required|integer',
+            'shop_id' => 'required|integer|exists:shops,id',
         ];
     }
 }

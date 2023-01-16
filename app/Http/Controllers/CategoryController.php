@@ -35,7 +35,6 @@ class CategoryController extends Controller
      * @apiBody  {String} name name
      * @apiBody {String} description description
      * @apiBody {Number} shop_id shop_id
-     * @apiParam {Number} id model id
      */
     public function store(StoreCategoryRequest $request)
     {
@@ -50,6 +49,7 @@ class CategoryController extends Controller
      * @api {get} /category/:id category.show
      * @apiName category.show
      * @apiGroup category
+     * @apiParam {Number} id model id
      */
     public function show(Category $category)
     {

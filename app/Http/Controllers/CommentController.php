@@ -48,7 +48,7 @@ class CommentController extends Controller
 
 
     /**
-     * @api {get} /comment/{comment} comment.show
+     * @api {get} /comment/:id comment.show
      * @apiName comment.show
      * @apiGroup comment
      * @apiParam {Number} id model id

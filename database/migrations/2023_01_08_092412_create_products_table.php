@@ -21,8 +21,6 @@ return new class extends Migration
             $table->integer('quantity')->default(0);
             $table->integer('price')->default(0);
             $table->boolean('active')->default(true);
-            $table->dateTime('started_at');
-            $table->dateTime('ended_at');
             $table->enum('block_status', ['block', 'ok'])->default('ok');
             $table->foreignIdFor(\App\Models\User::class);
             $table->foreignIdFor(\App\Models\Shop::class);

@@ -57,7 +57,6 @@ class DiscountController extends Controller
         return response()->json($discount);
     }
 
-
     /**
      * @api {put} /discount/:id discount.update
      * @apiName discount.update

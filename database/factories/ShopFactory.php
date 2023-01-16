@@ -18,7 +18,6 @@ class ShopFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
-            'social_address' => $this->faker->userName,
             'description' => $this->faker->sentence,
             'phone' => $this->faker->phoneNumber,
             'mobile' => $this->faker->phoneNumber,

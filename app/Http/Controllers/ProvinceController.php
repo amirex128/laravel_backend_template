@@ -18,7 +18,8 @@ class ProvinceController extends Controller
      */
     public function index(Request $request)
     {
-        //
+        $province = Province::query()->get();
+        return response()->json($province);
     }
 
 }

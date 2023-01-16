@@ -23,8 +23,6 @@ class ProductFactory extends Factory
             'quantity' => $this->faker->numberBetween(1000, 100000),
             'price' => $this->faker->numberBetween(1000, 100000),
             'active' => $this->faker->boolean,
-            'started_at' => $this->faker->dateTimeBetween('now', '+1 year'),
-            'ended_at' => $this->faker->dateTimeBetween('+2 year', '+2 year'),
             'block_status' => $this->faker->randomElement(['block', 'ok']),
         ];
     }

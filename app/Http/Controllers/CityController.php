@@ -19,8 +19,7 @@ class CityController extends Controller
     public function index(Request $request)
     {
         $cities = City::query()
-            ->latest()
-            ->paginate($request->input('per_page', 10));
+            ->get();
 
         return response()->json($cities);
     }

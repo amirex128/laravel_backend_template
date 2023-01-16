@@ -18,8 +18,6 @@ class TicketFactory extends Factory
     {
         return [
             'is_answer' => $this->faker->boolean,
-            'guest_name' => $this->faker->name,
-            'guest_mobile' => $this->faker->phoneNumber,
             'title' => $this->faker->sentence,
             'body' => $this->faker->paragraph,
         ];

@@ -34,7 +34,10 @@ class StoreOptionRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name'=>'required|string|max:255',
+            'price'=>'required|integer',
+            'quantity'=>'required|integer',
+            'product_id'=>'required|integer|exists:products,id',
         ];
     }
 }
