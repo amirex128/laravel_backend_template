@@ -63,7 +63,7 @@ class OrderPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function create(User $user)
+    public function submitOrder(User $user)
     {
         return true;
     }
@@ -74,7 +74,7 @@ class OrderPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function customerCreate(Customer $user)
+    public function customerSubmitOrder(Customer $user)
     {
         return true;
     }

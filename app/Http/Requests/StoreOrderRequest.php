@@ -39,7 +39,7 @@ class StoreOrderRequest extends FormRequest
             'description'=>'filled|string',
             'order_items'=>'required|array',
             'order_items.*.product_id'=>'required|exists:products,id',
-            'order_items.*.option_id'=>'required|exists:options,id',
+            'order_items.*.option_id'=>'filled|exists:options,id',
             'order_items.*.quantity'=>'required|integer',
         ];
     }

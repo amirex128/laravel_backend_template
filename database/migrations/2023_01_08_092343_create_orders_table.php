@@ -33,7 +33,7 @@ return new class extends Migration {
             $table->foreignIdFor(\App\Models\Shop::class);
             $table->foreignIdFor(\App\Models\Customer::class);
             $table->foreignUuid('discount_id')->nullable();
-            $table->foreignIdFor(\App\Models\Address::class);
+            $table->foreignIdFor(\App\Models\Address::class)->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
