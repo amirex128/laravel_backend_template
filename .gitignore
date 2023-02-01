@@ -13,3 +13,6 @@ yarn-error.log
 /.vscode
 rr
 .rr.yaml
+.env
+.env.production
+.env.staging
